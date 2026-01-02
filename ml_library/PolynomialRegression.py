@@ -54,7 +54,8 @@ def gradientDescent(num_iters, alpha, X, w, y, b, lambda_ = 10):#Note that  y mu
                 b = btemp
                 break
     return w, b, alpha
-def predict(X_test, wfortest, bfortest, mu, sigma):#X_test sent here must be normalized
+def predict(X_test, wfortest, bfortest, mu, sigma):#X_test sent here must be normalized.
+# one thing to do here is to send raw X_test and let it be normlaized and added extra features here only.
     return ((np.dot(X_test, wfortest) + bfortest) * sigma)+mu
 def z_scoreNormalization(X):
     mu = np.mean(X, axis = 0)
