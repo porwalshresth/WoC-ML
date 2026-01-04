@@ -1,0 +1,36 @@
+def EuclideanDistance(X, x):
+    return (np.sqrt(np.sum((X - x)**2, axis=1)))
+def ManhattanDistance(X, x):
+    return (np.sum(np.abs(X-x), axis = 1))
+def MinkowskiDistance(X, x, p):
+    return (np.sum((np.abs(X - x)**p), axis = 1)**(1/p))
+def KNN(k, X, x, metric = 'Euclidean', p = None):
+    if (metric == 'Euclidean'):
+        distance = EuclideanDistance (X, x)
+    elif (metric == 'Manhattan'):
+        distance = ManhattanDistance(X, x)
+    elif (metric == 'Minkowski'):
+        distance = MinkowskiDistance(X, x, p)
+    return np.argsort(distance)[:k]
+def KNNClassifier(X, y, k, x, p = None, metric = 'Euclidean'):
+    indices = KNN(k, X, x, metric, p)
+    prediction = np.zeros(k, dtype = int)
+    for i in range (k):
+        prediction[i] = y[indices[i]]
+    PredictionValues, ThatPredictionCounts = np.unique(prediction, return_counts = True)
+    return PredictionValues[np.argmax(ThatPredictionCounts)]
+def KNNRegressor(X, y, k, x, p = None, metric = 'Euclidean'):
+    indices = KNN(k, X, x, metric, p)
+    prediction = np.zeros(k)
+    for i in range (k):
+        prediction[i] += y[indices[i]]/k
+    return np.sum(prediction)
+def Predict(X, XTest, y, k, Task, p = None, metric = 'Euclidean'):
+    Predictions = []
+    if (Task == 'Regressor'):
+        for x in XTest:
+            Predictions.append(KNNRegressor(X, y, k, x, p, metric))
+    elif (Task == 'Classifier'):
+        for x in XTest:
+            Predictions.append(KNNClassifier(X, y, k, x, p, metric))
+    return np.array(Predictions)
