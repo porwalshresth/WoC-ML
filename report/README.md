@@ -1,1 +1,55 @@
+Train your implemented algorithms on the provided training dataset and evaluate their performance on a hidden test dataset to validate correctness. You must also prepare a detailed report documenting all methodologies, experiments, and design decisions including any rejected approaches, along with justifications. 
+
+REPORT of The Machine Learning Library:
+In the implementations of Linear Regression, Polynomial Regression, Logistic Regression, the developer has used the optimization technique of Gradient Descent along with regularization and the data for training has to be normalized for fast working of Gradient Descent. The implementation of Linear and Polynomial Regression model uses the Mean Squared Error Loss and the implementation of Logistic Regression uses the Binary - Cross - Entropy Loss.
+In implementing the gradient descent algorithm for optimization, a concept is used by the developer which is if ever the cost increases in the loop of iterations, the same value of the parameter will be copied, but the value of learning rate will now be changed to one-third of what it was earlier - developer have used this approach as the developer's intuition says that the larger value of learning rate, the better will it be for the convergence of gradient descent algorithm.
+The user of the library has to change the testing dataset and predict on the normalized one by using the functions z_scoreNormalization() and predict respectively. Their parameters can be read in the code of the library.
+Below is the example of how the Linear Regression has to be used:
+df = pd.read_csv('Linear Regression Train.csv')
+y = df['target'].values
+df = df.drop(columns = ['target']).values
+z_norm_df, mu, sigma = z_scoreNormalization(df)
+z_norm_y, mu_y, sigma_y = z_scoreNormalization (y)
+w, b, alpha = gradientDescent(10, 0.3, z_norm_df, np.zeros(np.shape(df)[1]), z_norm_y, 0)
+print(w, b, alpha)
+X_test = pd.read_csv('Linear Regression Test.csv').values
+normalizedX_test = (X_test-mu)/sigma
+print(predict(normalizedX_test, w, b, mu_y, sigma_y))
+For the implementation of Polynomial Regression, the developer has used functions - generate_exponents which uses a recursive helper function to make a list to find the solutions of the equation: x₁ + x₂ + x₃ + ... + xₙ ≤ r where n is the number of input features in the dataset and r is the maximum degree allowed. The developer took this concept form the concept of Multinomial in Binomial Theorem. The total number of non negative solutions to the equation are ⁿ⁺ʳ⁻¹Cₙ. Here, the user of the library has to change the testing dataset and predict on the normalized one by using the functions z_scoreNormalization() and predict respectively. Their parameters can be read in the code of the library. Below is the example of how the Polynomial Regression has to be used:
+df = pd.read_csv('CleanedTrainingData.csv')
+y = df['y'].values
+df = df.drop (columns = ['y']).values #note that pandas documentation now mention of .to_numpy()
+XNew = create_polynomial_features(df, 3)
+z_norm_df, mu, sigma = z_scoreNormalization(XNew)
+z_norm_y, mu_y, sigma_y = z_scoreNormalization (y)
+w, b, alpha = gradientDescent(10, 0.03, z_norm_df, np.zeros(np.shape(XNew)[1]).reshape(-1, 1), z_norm_y.reshape(-1, 1), 0)
+X_test = pd.read_csv('poly_test.csv').values
+X_testNew = create_polynomial_features(X_test, 3)
+normalizedNewX_test = (X_testNew-mu)/sigma
+print(alpha)
+print(predict(z_norm_df, w, b, mu_y, sigma_y))
+In the implementation of Logistic Regression, the loss function has changed from the Mean Squared Error used in the Linear and Polynomial Regression to Binary - Cross - Entropy, also known as Log Loss. The user of the library can refer to the following code snippet to use the Logistic Regression Model:
+df = pd.read_csv('train_binary.csv')
+y = df['label'].values
+df = df.drop(columns = ['label']).values
+df_norm, mu, sigma = z_scoreNormalization(df)
+w, b, alpha = gradientDescent(10, 0.1, df_norm, np.zeros(np.shape(df)[1]), y, 0)
+X_test = pd.read_csv('test_binary.csv')
+X_test_normalize = (X_test - mu)/sigma
+print(predict(df_norm, w, b))
+'''Code for conversion to csv:
+a = pd.DataFrame(predict(df_norm, w, b))
+a.to_csv('trial.csv')'''
+K Nearest Neighbors and K Means Clustering
+Both of the above algorithms are capable of working on an entire dataset. The K Means Clustering implementation expects X to be a 2D matrix of shape (N, D) (where N is the number of examples and D is the number of features). In KNN, the KNNPredict function is capable of taking multiple inputs by using a loop for the passed dataset.
+The developer could not think of implementing vectorization in these two algorithms.
+Developer have given the user three features of using the distance metric in the K Nearest Neighbors algorithm - Euclidean, Manhattan, and Minkowski. Their formulas are as follows:
+Euclidean: https://en.wikipedia.org/wiki/File:Euclidean_distance_2d.svg
+Manhattan: https://media.geeksforgeeks.org/wp-content/uploads/20250826124614230959/Example.png Here the distance will be - D(P,Q)=∣x₁−x₂∣+∣y₁−y₂∣=∣1−4∣+∣2−0∣=3+2=5
+Minkowski: https://images.prismic.io/turing/65a53bea7a5e8b1120d5880c_image4_11zon_1_d5961a7f6e.webp?auto=format,compress
+In the K Means Clustering alogorithm, if a cluster has no training examples then the algorithm does not reduce the number of clusters which is a common way as mentioned by Andrew NG but the algorithm keeps the number of clusters given by user as the final and tries to return that number of clusters only. The cost function used here is Distortion function. The algorithm runs the number of times as a user will enter and if it it not entered, the developer has configured the automatic number such that it will run minimum 50 and maxiumum 1000 times. The algorithm will run for num_iters time and the best possible set of clusters with minimum cost - the distortion function will be returned. 
+I have developed two models of K Nearest Neighbors which work for both the classification and the regression problem.
+
+REPORT of the dataset:
+
 
