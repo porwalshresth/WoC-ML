@@ -1,1 +1,2 @@
-
+For the Kaggle Competition, I have used three algorithms - Logistic Regression, Neural Networks and XGBoost
+In the Exploratory Data Analysis, the I first checked if there is any cell in the entire of the dataset which contains a non - numeric value except for the column heade
