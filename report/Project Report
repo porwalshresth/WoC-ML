@@ -51,5 +51,10 @@ In the K Means Clustering alogorithm, if a cluster has no training examples then
 I have developed two models of K Nearest Neighbors which work for both the classification and the regression problem.
 
 REPORT of the dataset:
-I have split the training set to tune for the best parameters, then used the entire training data to make the predictions on the test data..
+I have split the training set to tune for the best parameters, then used the entire training data to make the predictions on the test data.
+Value of Parameters for Logistic Regression:
+#using Alpha: 10.0  Lambda: 0 Iterations: 3000 to train and predict.
+For Polynomial Regression:
 
+
+#starting alpha = 0.01, degree = 2, lambda = 1, iterations = 20,000
