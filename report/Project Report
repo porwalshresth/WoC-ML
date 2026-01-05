@@ -51,5 +51,5 @@ In the K Means Clustering alogorithm, if a cluster has no training examples then
 I have developed two models of K Nearest Neighbors which work for both the classification and the regression problem.
 
 REPORT of the dataset:
-
+I have split the training set to tune for the best parameters, then used the entire training data to make the predictions on the test data..
 
