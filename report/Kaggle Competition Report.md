@@ -2,8 +2,10 @@ For the Kaggle Competition, I have used three algorithms - Logistic Regression, 
 In the Exploratory Data Analysis, the I first checked if there is any cell in the entire of the dataset which contains a non - numeric value except for the column headers and checked if any row is repeated more than once in the dataset or if any ... I was just curious to know about the class distibution of 0s and 1s in the dataset and so I found out that only about 200 1s exist in the dataset and the remaining 1800 were 0s.
 For the implementation of Logistic Regression what I thought that it would work the best if I make a dataset such that it contains a 50:50 ratio of 0s and 1s. I manually copy - pasted the 200 1s 9 more times and trained the algorithm on that dataset and found my model having an accuracy of 0.84 on the public leaderboard - It predicted a total of about 340 1s in the entire of the training dataset and it had the fitting accuaracy to the trained dataset as 1. I used the module sklearn.linear_model to implement the model of logistic regression. I was in a notion that a neural network would be much better in the classification task but was late to realize the same after the Kaggle Competitions results were declared. I focused a lot over the design of neural networks and choosing the parameters of it rather than trying to improvise or improve upon the model of Logistic Regression.
 
+
 Neural Networks:
 I build a total of two neural networks - one was trained with 1600 examples (80%) of the training set given by the club members which were randomly chosen and its accuracy was judged on the cross validation set which had the other 400 examples of the training set; the other one was trained on the entire dataset which used the entire of the dataset on the same parameters as I found from the other neural network.
+
 I used TensorFlow to build the neural network. It had 3 layers containing the units - 128, 64 and 1 respectively.
 For the one which was trained on 1600 examples (as described above): 
 I first used a loop of 10 random seeds to find out that which gave me the best result on cross - validation set for the value of multiplier of 1s from 1 to 9. I obtained the following result:
@@ -20,4 +22,11 @@ Since the value of average accuracy for values of regularization parameters ≥ 
 <img width="666" height="259" alt="image" src="https://github.com/user-attachments/assets/0851e32a-ae7d-48b6-84c6-d458a02cd20c" />
 
 So I found the curve to just have developed a simple model which is learning to predict 0 or I found out that the value of regularization parameter which is sufficiently large so the model becomes so simple that it effectively is underfitting (or has high bias) and is unable to capture the trends in the data.
-Considering the fear of fitting and even trying values less than 0.001, I ended up to choose the value of regularization parameter as 0.
+Considering the fear of under-fitting for values greater than or equal to 1 and even trying values less than 0.001, I ended up to choose the value of regularization parameter as 0.
+
+For training of the second neural network:
+I just used the values of the regularization parameter and the multipliers I obtained from the above neural network to build this neural network on the entire of the training set as we had about 3072*128 + 128 + 64*128 + 64 + 64*1 + 1 = 401665 and so more data - just 400 more training examples will help me in being able to build a better neural network.
+
+
+For building of Boosted Trees
+I used the library XGBoost with XGBClassifier method with number of trees equal to 100 so as to build sufficient models on which the previous models could have given wrong prediction, maximum depth of tree as three to prevent overfitting, scale_pos_weight=6 which I adapted from the earlier mentioned neural network - the first one which was trained on 1600 training examples.
