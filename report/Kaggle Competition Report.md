@@ -12,9 +12,12 @@ I first used a loop of 10 random seeds to find out that which gave me the best r
 I found out that the multiplier which gave me the best result as 6 as it gave me the highest average accuracy.
 After founding out the best value of multiplier of 1s, I ran the loop over the values of regularization parameters as 0.0, 0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1 over 10 values of random seed. I obtained the following result:
 <img width="602" height="308" alt="Screenshot 2025-12-30 143816" src="https://github.com/user-attachments/assets/3de0f818-7b3b-421d-a2f8-f7c29d79ebc9" />
+
 Since the value of regularization parameter as 1 gave me the best value of average accuracy on the cross - validation set, I decided to check the value of average accuracy on values of regularization parameter as > 1 over the values of 1, 3, 10, 30, 100, 300 which I obtained as follows:
 <img width="711" height="240" alt="Screenshot 2025-12-30 150009" src="https://github.com/user-attachments/assets/ec0bc097-759e-42e3-9ab5-6275e110b0f2" />
+
 Since the value of average accuracy for values of regularization parameters ≥ 1, I decided to find out the value of mean of all the parameters of the neural network which I found out to be less than 0.001
 <img width="666" height="259" alt="image" src="https://github.com/user-attachments/assets/0851e32a-ae7d-48b6-84c6-d458a02cd20c" />
+
 So I found the curve to just have developed a simple model which is learning to predict 0 or I found out that the value of regularization parameter which is sufficiently large so the model becomes so simple that it effectively is underfitting (or has high bias) and is unable to capture the trends in the data.
 Considering the fear of fitting and even trying values less than 0.001, I ended up to choose the value of regularization parameter as 0.
