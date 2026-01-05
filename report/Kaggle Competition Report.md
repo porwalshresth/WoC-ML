@@ -8,6 +8,7 @@ I used TensorFlow to build the neural network. It had 3 layers containing the un
 For the one which was trained on 1600 examples (as described above): 
 I first used a loop of 10 random seeds to find out that which gave me the best result on cross - validation set for the value of multiplier of 1s from 1 to 9. I obtained the following result:
 <img width="597" height="245" alt="image" src="https://github.com/user-attachments/assets/46efaccf-cca0-4e58-9aa0-95104de287e0" />
+
 I found out that the multiplier which gave me the best result as 6 as it gave me the highest average accuracy.
 After founding out the best value of multiplier of 1s, I ran the loop over the values of regularization parameters as 0.0, 0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1 over 10 values of random seed. I obtained the following result:
 <img width="602" height="308" alt="Screenshot 2025-12-30 143816" src="https://github.com/user-attachments/assets/3de0f818-7b3b-421d-a2f8-f7c29d79ebc9" />
