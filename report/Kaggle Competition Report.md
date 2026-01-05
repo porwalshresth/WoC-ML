@@ -8,3 +8,4 @@ I build a total of two neural networks - one was trained with 1600 examples (80%
 I used TensorFlow to build the neural network. It had 3 layers containing the units - 128, 64 and 1 respectively.
 For the one which was trained on 1600 examples (as described above): 
 I first used a loop of 10 random seeds to find out that which 
+<img width="597" height="245" alt="image" src="https://github.com/user-attachments/assets/46efaccf-cca0-4e58-9aa0-95104de287e0" />
