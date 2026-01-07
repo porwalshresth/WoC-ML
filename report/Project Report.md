@@ -55,6 +55,9 @@ I have split the training set to tune for the best parameters, then used the ent
 Value of Parameters for Logistic Regression:
 #using Alpha: 10.0  Lambda: 0 Iterations: 3000 to train and predict.
 For Polynomial Regression:
-
-
 #starting alpha = 0.01, degree = 2, lambda = 1, iterations = 20,000
+For K Means Clustering on the dataset:
+I ran the code for K - the number of clusters from 1 to 10 and the plot I obtained was as follows:
+<img width="841" height="547" alt="image" src="https://github.com/user-attachments/assets/e594a786-3e5d-4de6-89d2-22b5f4b8646b" />
+
+Observing in the plot, I found the value of number of clusters (K) as 3.
