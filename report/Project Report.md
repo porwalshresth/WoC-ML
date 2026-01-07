@@ -61,3 +61,5 @@ I ran the code for K - the number of clusters from 1 to 10 and the plot I obtain
 <img width="841" height="547" alt="image" src="https://github.com/user-attachments/assets/e594a786-3e5d-4de6-89d2-22b5f4b8646b" />
 
 Observing in the plot, I found the value of number of clusters (K) as 3.
+For Linear Regression, the following parameters were used:
+# using iterations = 10000, alpha = 1, lambda = 0
