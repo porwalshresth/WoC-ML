@@ -9,5 +9,4 @@ K - Means Clustering,
 Decision Layers, and
 Neural Network with weight initilizations and Normalizations.
 Apart from this, there was an online Kaggle Competition hosted by my college club - CyberLabs - it also has code for them.
-This is my first time using Github and any feedback, or suggestions related to the repository or improper structure or any changes would be most welcome.
-My email Id is 25je1099@iitism.ac.in and phone number is 8899920030. 
+This is my first time using Github and any feedback, or suggestions related to the repository or improper structure or any changes would be most welcome. 
